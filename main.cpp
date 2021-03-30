@@ -5,10 +5,16 @@
 
 using namespace std;
 
-struct rsN {
+struct subNet {
     double thRes{};
     int nodes[2]{0, 1};
     vector<int> elem;
+};
+
+struct net {
+    double thRes{0};
+    int majorNodes[2]{0};
+    vector<subNet> subNets;
 };
 
 double parallel(vector<double> res) {
@@ -23,39 +29,36 @@ double series(vector<double> res) {
     return result;
 }
 
-vector<rsN> networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNetSize = 100) {
-    // Init error bounds
-    double errMax = desiredVal + err;
-    double errMin = desiredVal - err;
+net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNodes = 100) {
+    double errBounds[2] = {
+            desiredVal + err,
+            desiredVal - err
+    };
 
-    // Init subNet
-    rsN subNet;
-    subNet.thRes = madeOf;
-    subNet.elem.push_back(madeOf);
+    // Init sNet
+    subNet sNet;
+    sNet.thRes = madeOf;
+    sNet.elem.push_back(madeOf);
 
-    // Init fullNet
-    double totRes = 0;
-    int majorNodes[2] = {0};
-    vector<rsN> fullNet;
+    net fNet;
+    while (((errBounds[1] < fNet.thRes) || (fNet.thRes < errBounds[0])) && (fNet.subNets.size() < maxNodes)) {
+        if (sNet.thRes <= (desiredVal - fNet.thRes)) {
+            fNet.majorNodes[1] = sNet.nodes[1];
+            fNet.thRes += sNet.thRes;
+            fNet.subNets.push_back(sNet);
 
-    while (((errMax < totRes) || (totRes < errMin)) && (fullNet.size() < maxNetSize)) {
-        if (subNet.thRes <= (desiredVal - totRes)) {
-            majorNodes[1] = subNet.nodes[1];
-            totRes += subNet.thRes;
-            fullNet.push_back(subNet);
-
-            subNet.nodes[0]++;
-            subNet.nodes[1]++;
+            sNet.nodes[0]++;
+            sNet.nodes[1]++;
         } else {
-            subNet.elem.push_back(madeOf);
-            subNet.thRes = parallel({subNet.thRes, madeOf});
+            sNet.elem.push_back(madeOf);
+            sNet.thRes = parallel({sNet.thRes, madeOf});
         }
     }
-    cout << "totRes = " << totRes << endl;
-    return fullNet;
+    cout << fNet.thRes << endl;
+    return fNet;
 }
 
 int main() {
-    vector<rsN> net = networking(420, 69, 0.01, 7);
+    net tmp = networking(42, 1337, 0.01, 2);
     return 0;
 }
