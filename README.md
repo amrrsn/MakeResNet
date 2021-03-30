@@ -7,4 +7,4 @@ Creates a Resistor Network to achieve an equivilent resistance using only a spec
   
   Planned Features:
   - [x] Vector Output
-  - [o] [Spice Output](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
+  - [ ] [Spice Output](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
