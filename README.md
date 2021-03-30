@@ -6,9 +6,10 @@ Tools Used:
   + [Git](https://git-scm.com)
   + [GitHub](https://github.com)
   
-Hopeful Features:
+TODO:
   - [x] Vector Output
   - [ ] Documentation
+  - [ ] Unit Tests
   - [ ] Start with Arbitrary Node
   - [ ] [Spice Net Output](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
   - [ ] Accept multiple available resistor values
