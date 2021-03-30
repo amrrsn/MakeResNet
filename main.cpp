@@ -15,6 +15,17 @@ struct net {
     std::vector<subNet> subNets;
 };
 
+double parallel(std::vector<double> res);
+
+[[maybe_unused]] double series(std::vector<double> res);
+
+net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNodes = 100);
+
+int main() {
+    net tmp = networking(42, 1337, 0.01, 2);
+    return 0;
+}
+
 double parallel(std::vector<double> res) {
     double numerator = accumulate(begin(res), end(res), (double) 1, std::multiplies<>());
     double denominator = accumulate(begin(res), end(res), (double) 0);
@@ -27,7 +38,7 @@ double series(std::vector<double> res) {
     return result;
 }
 
-net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNodes = 100) {
+net networking(double desiredVal, double madeOf, double err, size_t maxNodes) {
     double errBounds[2] = {
             desiredVal + err,
             desiredVal - err
@@ -53,9 +64,4 @@ net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, si
     }
     std::cout << fNet.thRes << std::endl;
     return fNet;
-}
-
-int main() {
-    net tmp = networking(42, 1337, 0.01, 2);
-    return 0;
 }
