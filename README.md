@@ -8,6 +8,7 @@ Tools Used:
   
 Hopeful Features:
   - [x] Vector Output
+  - [ ] Documentation
   - [ ] Start with Arbitrary Node
   - [ ] [Spice Net Output](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
   - [ ] Accept multiple available resistor values
