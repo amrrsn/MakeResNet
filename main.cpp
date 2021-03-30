@@ -3,28 +3,26 @@
 #include <functional>
 #include <numeric>
 
-using namespace std;
-
 struct subNet {
     double thRes{};
     int nodes[2]{0, 1};
-    vector<int> elem;
+    std::vector<int> elem;
 };
 
 struct net {
     double thRes{0};
     int majorNodes[2]{0};
-    vector<subNet> subNets;
+    std::vector<subNet> subNets;
 };
 
-double parallel(vector<double> res) {
-    double numerator = accumulate(begin(res), end(res), (double) 1, multiplies<>());
+double parallel(std::vector<double> res) {
+    double numerator = accumulate(begin(res), end(res), (double) 1, std::multiplies<>());
     double denominator = accumulate(begin(res), end(res), (double) 0);
     double result = numerator / denominator;
     return result;
 }
 
-double series(vector<double> res) {
+double series(std::vector<double> res) {
     double result = accumulate(begin(res), end(res), 0.);
     return result;
 }
@@ -35,7 +33,6 @@ net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, si
             desiredVal - err
     };
 
-    // Init sNet
     subNet sNet;
     sNet.thRes = madeOf;
     sNet.elem.push_back(madeOf);
@@ -54,7 +51,7 @@ net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, si
             sNet.thRes = parallel({sNet.thRes, madeOf});
         }
     }
-    cout << fNet.thRes << endl;
+    std::cout << fNet.thRes << std::endl;
     return fNet;
 }
 
