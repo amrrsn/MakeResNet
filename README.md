@@ -13,3 +13,6 @@ Hopeful Features:
   - [ ] Accept multiple available resistor values
   - [ ] GUI
   - [ ] Arbitrary Impedance support
+
+
+Initially a joke, I can't believe I'm actually doing this...
