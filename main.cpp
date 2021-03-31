@@ -19,10 +19,10 @@ double parallel(std::vector<double> res);
 
 [[maybe_unused]] double series(std::vector<double> res);
 
-net networking(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNodes = 100);
+net create_net(double desiredVal = 100, double madeOf = 17, double err = 0.1, size_t maxNodes = 100);
 
 int main() {
-    net tmp = networking(42, 1337, 0.01, 2);
+    net tmp = create_net(42, 69, 0.01, 3);
     return 0;
 }
 
@@ -38,7 +38,7 @@ double series(std::vector<double> res) {
     return result;
 }
 
-net networking(double desiredVal, double madeOf, double err, size_t maxNodes) {
+net create_net(double desiredVal, double madeOf, double err, size_t maxNodes) {
     double errBounds[2] = {
             desiredVal + err,
             desiredVal - err
@@ -65,3 +65,4 @@ net networking(double desiredVal, double madeOf, double err, size_t maxNodes) {
     std::cout << fNet.thRes << std::endl;
     return fNet;
 }
+
