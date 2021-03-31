@@ -8,10 +8,11 @@ Tools Used:
   
 TODO:
   - [x] Vector Output
-  - [ ] Documentation
-  - [ ] Unit Tests
+  - [ ] [Documentation](https://www.doxygen.nl/index.html)
+  - [ ] [Unit Tests](https://github.com/google/googletest)
   - [ ] Start with Arbitrary Node
   - [ ] [Spice Net Output](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
+  - [ ] [Spice Net Input](http://bwrcs.eecs.berkeley.edu/Classes/IcBook/SPICE/)
   - [ ] Accept multiple available resistor values
   - [ ] GUI
   - [ ] Arbitrary Impedance support
